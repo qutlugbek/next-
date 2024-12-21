@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headphones Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {},
+      },
+      plugins: [daisyui],
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/daisyui@2.51.1/dist/full.js"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
+  <div class="container mx-auto py-10 px-4">
+    <!-- Header -->
+    <h1 class="text-5xl font-bold text-center mb-10 text-gray-800">
+      🎧 Welcome to the Headphones Store 🎶
+    </h1>
+
+    <!-- Search Bar -->
+    <div class="flex justify-center mb-8">
+      <div class="relative w-full max-w-lg">
+        <input 
+          id="searchBar" 
+          type="text" 
+          placeholder="Search headphones..." 
+          class="input input-bordered input-primary w-full pl-12 text-lg rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" 
+          oninput="filterHeadphones()"
+        />
+        <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+          🔍
+        </span>
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex justify-center mb-8">
+      <select id="categoryFilter" class="select select-bordered w-full max-w-xs" onchange="filterByCategory()">
+        <option value="all">All Categories</option>
+        <option value="headphones">Headphones</option>
+        <option value="earbuds">Earbuds</option>
+      </select>
+    </div>
+
+    <!-- Price Sort -->
+    <div class="flex justify-center mb-8">
+      <select id="priceSort" class="select select-bordered w-full max-w-xs" onchange="sortByPrice()">
+        <option value="none">Sort by Price</option>
+        <option value="lowToHigh">Low to High</option>
+        <option value="highToLow">High to Low</option>
+      </select>
+    </div>
+
+    <!-- Loading Animation -->
+    <div id="loading" class="flex justify-center items-center h-64">
+      <div class="loader animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="cardsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 hidden">
+      <!-- Kartalar API ma'lumotlariga asoslangan holda avtomatik yuklanadi -->
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
